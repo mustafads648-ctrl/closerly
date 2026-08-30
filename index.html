@@ -1,12 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Closerly — Sales Opportunities</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closerly — Sales Opportunities</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #08090D;
+  color: #FFFFFF;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 7%;
+  border-bottom: 1px solid #1F222B;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  color: #9CA3AF;
+}
+
+.hero {
+  text-align: center;
+  padding: 110px 20px 80px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1.05;
+  margin: 0 auto 25px;
+  max-width: 850px;
+}
+
+.hero h1 span {
+  color: #3B82F6;
+}
+
+.hero p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #9CA3AF;
+  max-width: 650px;
+  margin: auto;
+}
+
+.buttons {
+  margin-top: 35px;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 6px;
+}
+
+.primary {
+  background: #3B82F6;
+  color: white;
+}
+
+.secondary {
+  border: 1px solid #30343F;
+  color: white;
+}
+
+.section {
+  padding: 70px 7%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 45px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: #11131A;
+  border: 1px solid #20232D;
+  padding: 28px;
+  border-radius: 16px;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 21px;
+}
+
+.card p {
+  color: #9CA3AF;
+  line-height: 1.6;
+}
+
+.opportunity {
+  border: 1px solid #20232D;
+  background: #11131A;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.tag {
+  display: inline-block;
+  background: #17233D;
+  color: #60A5FA;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.opportunity h3 {
+  margin: 5px 0 10px;
+}
+
+.opportunity p {
+  color: #9CA3AF;
+}
+
+.cta {
+  text-align: center;
+  padding: 100px 20px;
+  border-top: 1px solid #1F222B;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #6B7280;
+  border-top: 1px solid #1F222B;
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 80px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <h1>Closerly</h1>
-  <p>Find Your Next Sales Opportunity.</p>
+
+<nav>
+  <div class="logo">Closerly</div>
+
+  <div class="nav-links">
+    <span>Opportunities</span>
+    <span>Membership</span>
+    <span>About</span>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <h1>
+    Find Your Next <span>Sales Opportunity.</span>
+  </h1>
+
+  <p>
+    Discover curated setter and closer opportunities from growing businesses — all in one place.
+  </p>
+
+  <div class="buttons">
+    <a class="button primary" href="#opportunities">
+      Explore Opportunities
+    </a>
+
+    <a class="button secondary" href="#membership">
+      Become a Member
+    </a>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <h2 class="section-title">Why Closerly?</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Curated Opportunities</h3>
+      <p>
+        Discover sales opportunities selected for sales professionals.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Setter & Closer Roles</h3>
+      <p>
+        Find appointment setter, DM setter, SDR and closer opportunities.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Remote Opportunities</h3>
+      <p>
+        Discover remote sales roles from businesses looking for talent.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Direct Applications</h3>
+      <p>
+        Apply directly to businesses through their official application process.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="opportunities">
+
+  <h2 class="section-title">Featured Opportunities</h2>
+
+  <div class="cards">
+
+    <div class="opportunity">
+      <span class="tag">SETTER</span>
+      <h3>High-Ticket Sales Setter</h3>
+      <p>Marketing Agency · Remote</p>
+      <p>Commission Based</p>
+      <a class="button secondary" href="#">
+        View Opportunity
+      </a>
+    </div>
+
+    <div class="opportunity">
+      <span class="tag">CLOSER</span>
+      <h3>High-Ticket Closer</h3>
+      <p>Coaching Business · Remote</p>
+      <p>Commission Based</p>
+      <a class="button secondary" href="#">
+        View Opportunity
+      </a>
+    </div>
+
+    <div class="opportunity">
+      <span class="tag">DM SETTER</span>
+      <h3>DM Sales Setter</h3>
+      <p>E-commerce Brand · Remote</p>
+      <p>Commission Based</p>
+      <a class="button secondary" href="#">
+        View Opportunity
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="membership">
+
+  <h2 class="section-title">Built For Serious Sales Professionals</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Save Time</h3>
+      <p>
+        Stop searching through countless communities and platforms for your next opportunity.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Find Better Opportunities</h3>
+      <p>
+        Browse opportunities organised by role, industry, compensation and location.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>One Marketplace</h3>
+      <p>
+        Keep your sales opportunities organised in one professional platform.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="cta">
+
+  <h2>Ready to find your next opportunity?</h2>
+
+  <p>
+    Explore the sales opportunities available through Closerly.
+  </p>
+
+  <a class="button primary" href="#opportunities">
+    Explore Opportunities
+  </a>
+
+</section>
+
+<footer>
+  © 2026 Closerly. All rights reserved.
+</footer>
+
 </body>
 </html>
