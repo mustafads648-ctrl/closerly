@@ -251,12 +251,41 @@ footer {
   <div style="max-width:1100px;margin:0 auto 40px;">
 
     <input
-      id="searchInput"
-      type="text"
-      placeholder="Search opportunities..."
-      style="width:100%;padding:16px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;font-size:16px;"
-      onkeyup="filterOpportunities()"
-    >
+  id="searchInput"
+  type="text"
+  placeholder="Search opportunities..."
+  onkeyup="filterOpportunities()"
+  style="width:100%;padding:16px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;font-size:16px;margin-bottom:15px;"
+>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+
+  <select id="roleFilter" onchange="filterOpportunities()"
+    style="width:100%;padding:14px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;">
+    <option value="">All Roles</option>
+    <option value="setter">Setter</option>
+    <option value="closer">Closer</option>
+    <option value="dm setter">DM Setter</option>
+  </select>
+
+  <select id="industryFilter" onchange="filterOpportunities()"
+    style="width:100%;padding:14px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;">
+    <option value="">All Industries</option>
+    <option value="marketing">Marketing</option>
+    <option value="coaching">Coaching</option>
+    <option value="e-commerce">E-commerce</option>
+  </select>
+
+  <select id="oteFilter" onchange="filterOpportunities()"
+    style="width:100%;padding:14px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;">
+    <option value="">All OTE</option>
+    <option value="1k-3k">£1k–£3k</option>
+    <option value="3k-5k">£3k–£5k</option>
+    <option value="5k+">£5k+</option>
+  </select>
+
+</div>
+    
 
   </div>
 
@@ -345,20 +374,53 @@ function filterOpportunities() {
     .value
     .toLowerCase();
 
-  const opportunities = document.querySelectorAll(".opportunity");
+  const role = document
+    .getElementById("roleFilter")
+    .value
+    .toLowerCase();
+
+  const industry = document
+    .getElementById("industryFilter")
+    .value
+    .toLowerCase();
+
+  const ote = document
+    .getElementById("oteFilter")
+    .value
+    .toLowerCase();
+
+  const opportunities =
+    document.querySelectorAll(".opportunity");
 
   opportunities.forEach(function(opportunity) {
 
-    const text = opportunity.textContent.toLowerCase();
+    const text =
+      opportunity.textContent.toLowerCase();
 
-    if (text.includes(search)) {
+    const matchesSearch =
+      text.includes(search);
+
+    const matchesRole =
+      !role || text.includes(role);
+
+    const matchesIndustry =
+      !industry || text.includes(industry);
+
+    const matchesOte =
+      !ote || text.includes(ote);
+
+    if (
+      matchesSearch &&
+      matchesRole &&
+      matchesIndustry &&
+      matchesOte
+    ) {
       opportunity.style.display = "block";
     } else {
       opportunity.style.display = "none";
     }
 
   });
-
 }
 </script>
 </body>
