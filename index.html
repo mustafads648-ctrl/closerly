@@ -337,6 +337,29 @@ footer {
 <footer>
   © 2026 Closerly. All rights reserved.
 </footer>
+<script>
+function filterOpportunities() {
 
+  const search = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  const opportunities = document.querySelectorAll(".opportunity");
+
+  opportunities.forEach(function(opportunity) {
+
+    const text = opportunity.textContent.toLowerCase();
+
+    if (text.includes(search)) {
+      opportunity.style.display = "block";
+    } else {
+      opportunity.style.display = "none";
+    }
+
+  });
+
+}
+</script>
 </body>
 </html>
