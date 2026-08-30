@@ -242,18 +242,32 @@ footer {
 
 <section class="section" id="opportunities">
 
-  <h2 class="section-title">Featured Opportunities</h2>
+  <h2 class="section-title">Explore Opportunities</h2>
 
-  <div class="cards">
+  <p style="text-align:center;color:#9CA3AF;max-width:650px;margin:-25px auto 35px;">
+    Browse curated sales opportunities for setters and closers.
+  </p>
+
+  <div style="max-width:1100px;margin:0 auto 40px;">
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search opportunities..."
+      style="width:100%;padding:16px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;font-size:16px;"
+      onkeyup="filterOpportunities()"
+    >
+
+  </div>
+
+  <div class="cards" id="opportunityList">
 
     <div class="opportunity">
       <span class="tag">SETTER</span>
       <h3>High-Ticket Sales Setter</h3>
       <p>Marketing Agency · Remote</p>
       <p>Commission Based</p>
-      <a class="button secondary" href="#">
-        View Opportunity
-      </a>
+      <a class="button secondary" href="#">View Opportunity</a>
     </div>
 
     <div class="opportunity">
@@ -261,9 +275,7 @@ footer {
       <h3>High-Ticket Closer</h3>
       <p>Coaching Business · Remote</p>
       <p>Commission Based</p>
-      <a class="button secondary" href="#">
-        View Opportunity
-      </a>
+      <a class="button secondary" href="#">View Opportunity</a>
     </div>
 
     <div class="opportunity">
@@ -271,15 +283,12 @@ footer {
       <h3>DM Sales Setter</h3>
       <p>E-commerce Brand · Remote</p>
       <p>Commission Based</p>
-      <a class="button secondary" href="#">
-        View Opportunity
-      </a>
+      <a class="button secondary" href="#">View Opportunity</a>
     </div>
 
   </div>
 
 </section>
-
 <section class="section" id="membership">
 
   <h2 class="section-title">Built For Serious Sales Professionals</h2>
