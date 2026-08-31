@@ -683,6 +683,50 @@ async function checkSupabaseConnection() {
 checkSupabaseConnection();
 
 </script>
+<script>
+async function loadOpportunities() {
+  const { data, error } = await supabaseClient
+    .from("opportunities")
+    .select("*")
+    .order("created_at", { ascending: false });
 
+  if (error) {
+    console.error("Could not load opportunities:", error);
+    return;
+  }
+
+  const list = document.getElementById("opportunityList");
+
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  data.forEach(function(opportunity) {
+
+    const card = document.createElement("div");
+
+    card.className = "opportunity";
+
+    card.innerHTML = `
+      <span class="tag">${opportunity.role || "SALES"}</span>
+
+      <h3>${opportunity.title || "Untitled Opportunity"}</h3>
+
+      <p>${opportunity.company || "Company"} · ${opportunity.location || "Remote"}</p>
+
+      <p>OTE: ${opportunity.ote || "Not specified"}</p>
+
+      <a class="button secondary"
+         href="#opportunity-${opportunity.id}">
+        View Opportunity
+      </a>
+    `;
+
+    list.appendChild(card);
+  });
+}
+
+loadOpportunities();
+</script>
 </body>
 </html>
