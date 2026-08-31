@@ -8,173 +8,261 @@
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #08090D;
-  color: #FFFFFF;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #08090d;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(8, 9, 13, 0.95);
+  border-bottom: 1px solid #20232c;
+  padding: 18px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 7%;
-  border-bottom: 1px solid #1F222B;
 }
 
 .logo {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .nav-links {
   display: flex;
   gap: 25px;
-  color: #9CA3AF;
+  color: #b8bdc9;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
 }
 
 .hero {
   text-align: center;
-  padding: 110px 20px 80px;
+  padding: 110px 20px 90px;
+  background: radial-gradient(circle at top, #171b27 0%, #08090d 55%);
 }
 
 .hero h1 {
-  font-size: clamp(42px, 7vw, 72px);
-  line-height: 1.05;
-  margin: 0 auto 25px;
-  max-width: 850px;
-}
-
-.hero h1 span {
-  color: #3B82F6;
+  font-size: clamp(45px, 8vw, 80px);
+  margin-bottom: 20px;
 }
 
 .hero p {
+  color: #a8adba;
   font-size: 20px;
-  line-height: 1.6;
-  color: #9CA3AF;
   max-width: 650px;
   margin: auto;
 }
 
-.buttons {
-  margin-top: 35px;
-}
-
 .button {
   display: inline-block;
-  padding: 15px 25px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 6px;
+  padding: 13px 22px;
+  border-radius: 9px;
+  margin-top: 25px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
 }
 
 .primary {
-  background: #3B82F6;
-  color: white;
+  background: #ffffff;
+  color: #08090d;
 }
 
 .secondary {
-  border: 1px solid #30343F;
-  color: white;
+  border: 1px solid #353a47;
+  background: #11131a;
+  color: #ffffff;
 }
 
 .section {
-  padding: 70px 7%;
+  padding: 90px 6%;
 }
 
 .section-title {
   text-align: center;
-  font-size: 36px;
-  margin-bottom: 45px;
+  font-size: 38px;
+  margin-bottom: 50px;
+}
+
+.search-area {
+  max-width: 1100px;
+  margin: 0 auto 45px;
+}
+
+.search-area input,
+.search-area select {
+  width: 100%;
+  padding: 15px;
+  border-radius: 9px;
+  border: 1px solid #30343f;
+  background: #11131a;
+  color: white;
+  font-size: 15px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
   max-width: 1100px;
   margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.card {
-  background: #11131A;
-  border: 1px solid #20232D;
-  padding: 28px;
-  border-radius: 16px;
-}
-
-.card h3 {
-  margin-top: 0;
-  font-size: 21px;
-}
-
-.card p {
-  color: #9CA3AF;
-  line-height: 1.6;
-}
-
+.card,
 .opportunity {
-  border: 1px solid #20232D;
-  background: #11131A;
+  background: #11131a;
+  border: 1px solid #242832;
+  border-radius: 14px;
   padding: 25px;
-  border-radius: 16px;
+}
+
+.opportunity h3 {
+  font-size: 22px;
+  margin: 12px 0;
+}
+
+.opportunity p,
+.card p {
+  color: #a8adba;
+  margin: 8px 0;
 }
 
 .tag {
   display: inline-block;
-  background: #17233D;
-  color: #60A5FA;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
   padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 13px;
-  margin-bottom: 15px;
+  border-radius: 20px;
+  background: #202531;
+  color: #ffffff;
 }
 
-.opportunity h3 {
-  margin: 5px 0 10px;
+.detail {
+  display: none;
 }
 
-.opportunity p {
-  color: #9CA3AF;
+.detail:target {
+  display: block;
 }
 
-.cta {
+.detail-header {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.detail-header h2 {
+  font-size: clamp(36px, 6vw, 55px);
+  margin: 15px 0 8px;
+}
+
+.detail-subtitle {
+  color: #a8adba;
+  font-size: 18px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 35px 0;
+}
+
+.detail-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.detail-content h3 {
+  margin-top: 25px;
+  margin-bottom: 8px;
+}
+
+.detail-content p {
+  color: #a8adba;
+}
+
+.membership {
+  background: #0d0f15;
   text-align: center;
-  padding: 100px 20px;
-  border-top: 1px solid #1F222B;
+}
+
+.membership-text {
+  max-width: 650px;
+  margin: auto;
+  color: #a8adba;
+}
+
+.benefits {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.benefit {
+  background: #11131a;
+  border: 1px solid #242832;
+  padding: 25px;
+  border-radius: 14px;
 }
 
 footer {
   text-align: center;
-  padding: 30px;
-  color: #6B7280;
-  border-top: 1px solid #1F222B;
+  padding: 35px;
+  color: #777d8b;
+  border-top: 1px solid #20232c;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+  .cards,
+  .benefits,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
   .nav-links {
     display: none;
   }
 
-  .hero {
-    padding-top: 80px;
+  .section {
+    padding: 70px 5%;
   }
-}
-  #setter-details,
-#closer-details,
-#dm-details {
-  display: none;
-}
-
-#setter-details:target,
-#closer-details:target,
-#dm-details:target {
-  display: block;
 }
 </style>
 </head>
@@ -185,165 +273,143 @@ footer {
   <div class="logo">Closerly</div>
 
   <div class="nav-links">
-    <span>Opportunities</span>
-    <span>Membership</span>
-    <span>About</span>
+    <a href="#opportunities">Opportunities</a>
+    <a href="#membership">Membership</a>
   </div>
 </nav>
 
 <section class="hero">
 
-  <h1>
-    Find Your Next <span>Sales Opportunity.</span>
-  </h1>
+  <h1>Find Your Next Opportunity.</h1>
 
   <p>
-    Discover curated setter and closer opportunities from growing businesses — all in one place.
+    Discover curated sales opportunities built for ambitious
+    setters and closers.
   </p>
 
-  <div class="buttons">
-    <a class="button primary" href="#opportunities">
-      Explore Opportunities
-    </a>
+  <a class="button primary" href="#opportunities">
+    Explore Opportunities
+  </a>
 
-    <a class="button secondary" href="#membership">
-      Become a Member
-    </a>
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2 class="section-title">Why Closerly?</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>Curated Opportunities</h3>
-      <p>
-        Discover sales opportunities selected for sales professionals.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Setter & Closer Roles</h3>
-      <p>
-        Find appointment setter, DM setter, SDR and closer opportunities.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Remote Opportunities</h3>
-      <p>
-        Discover remote sales roles from businesses looking for talent.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Direct Applications</h3>
-      <p>
-        Apply directly to businesses through their official application process.
-      </p>
-    </div>
-
-  </div>
+  <a class="button secondary" href="#membership">
+    Become a Member
+  </a>
 
 </section>
 
 <section class="section" id="opportunities">
 
-  <h2 class="section-title">Explore Opportunities</h2>
+  <h2 class="section-title">
+    Explore Opportunities
+  </h2>
 
-  <p style="text-align:center;color:#9CA3AF;max-width:650px;margin:-25px auto 35px;">
-    Browse curated sales opportunities for setters and closers.
-  </p>
-
-  <div style="max-width:1100px;margin:0 auto 40px;">
+  <div class="search-area">
 
     <input
-  id="searchInput"
-  type="text"
-  placeholder="Search opportunities..."
-  onkeyup="filterOpportunities()"
-  style="width:100%;padding:16px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;font-size:16px;margin-bottom:15px;"
->
+      id="searchInput"
+      type="text"
+      placeholder="Search opportunities..."
+      oninput="filterOpportunities()"
+    >
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+    <div class="filters">
 
-  <select id="roleFilter" onchange="filterOpportunities()"
-    style="width:100%;padding:14px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;">
-    <option value="">All Roles</option>
-    <option value="setter">Setter</option>
-    <option value="closer">Closer</option>
-    <option value="dm setter">DM Setter</option>
-  </select>
+      <select id="roleFilter" onchange="filterOpportunities()">
+        <option value="">All Roles</option>
+        <option value="setter">Setter</option>
+        <option value="closer">Closer</option>
+        <option value="dm setter">DM Setter</option>
+      </select>
 
-  <select id="industryFilter" onchange="filterOpportunities()"
-    style="width:100%;padding:14px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;">
-    <option value="">All Industries</option>
-    <option value="marketing">Marketing</option>
-    <option value="coaching">Coaching</option>
-    <option value="e-commerce">E-commerce</option>
-  </select>
+      <select id="industryFilter" onchange="filterOpportunities()">
+        <option value="">All Industries</option>
+        <option value="marketing">Marketing</option>
+        <option value="coaching">Coaching</option>
+        <option value="e-commerce">E-commerce</option>
+      </select>
 
-  <select id="oteFilter" onchange="filterOpportunities()"
-    style="width:100%;padding:14px;border-radius:10px;border:1px solid #30343F;background:#11131A;color:white;">
-    <option value="">All OTE</option>
-    <option value="1k-3k">£1k–£3k</option>
-    <option value="3k-5k">£3k–£5k</option>
-    <option value="5k+">£5k+</option>
-  </select>
+      <select id="oteFilter" onchange="filterOpportunities()">
+        <option value="">All OTE</option>
+        <option value="1k-3k">£1k–£3k</option>
+        <option value="3k-5k">£3k–£5k</option>
+        <option value="5k+">£5k+</option>
+      </select>
 
-</div>
-    
-
+    </div>
   </div>
 
   <div class="cards" id="opportunityList">
 
-    <div class="opportunity">
+    <div class="opportunity"
+         data-role="setter"
+         data-industry="marketing"
+         data-ote="1k-3k">
+
       <span class="tag">SETTER</span>
+
       <h3>High-Ticket Sales Setter</h3>
+
       <p>Marketing Agency · Remote</p>
-      <p>Commission Based</p>
-      <a class="button secondary" href="#setter-details">View Opportunity</a>
+      <p>OTE: £1k–£3k+</p>
+
+      <a class="button secondary" href="#setter-details">
+        View Opportunity
+      </a>
+
     </div>
 
-    <div class="opportunity">
+    <div class="opportunity"
+         data-role="closer"
+         data-industry="coaching"
+         data-ote="3k-5k">
+
       <span class="tag">CLOSER</span>
+
       <h3>High-Ticket Closer</h3>
+
       <p>Coaching Business · Remote</p>
-      <p>Commission Based</p>
-      <a class="button secondary" href="#closer-details">View Opportunity</a>
+      <p>OTE: £3k–£5k+</p>
+
+      <a class="button secondary" href="#closer-details">
+        View Opportunity
+      </a>
+
     </div>
 
-    <div class="opportunity">
+    <div class="opportunity"
+         data-role="dm setter"
+         data-industry="e-commerce"
+         data-ote="1k-3k">
+
       <span class="tag">DM SETTER</span>
+
       <h3>DM Sales Setter</h3>
+
       <p>E-commerce Brand · Remote</p>
-      <p>Commission Based</p>
-      <a class="button secondary" href="#dm-details">View Opportunity</a>
+      <p>OTE: £1k–£3k+</p>
+
+      <a class="button secondary" href="#dm-details">
+        View Opportunity
+      </a>
+
     </div>
 
   </div>
-
 </section>
-  <section class="section" id="setter-details">
 
-  <div style="max-width:1000px;margin:auto;">
+<section class="section detail" id="setter-details">
+
+  <div class="detail-header">
 
     <span class="tag">SETTER</span>
 
-    <h2 style="font-size:42px;margin:15px 0 10px;">
-      High-Ticket Sales Setter
-    </h2>
+    <h2>High-Ticket Sales Setter</h2>
 
-    <p style="color:#9CA3AF;font-size:18px;">
+    <p class="detail-subtitle">
       Marketing Agency · Remote
     </p>
 
-    <div class="cards" style="margin-top:35px;">
+    <div class="info-grid">
 
       <div class="card">
         <h3>Role</h3>
@@ -362,27 +428,27 @@ footer {
 
     </div>
 
-    <div class="card" style="margin-top:30px;">
+    <div class="card detail-content">
 
       <h3>About the Opportunity</h3>
 
       <p>
-        Help a growing marketing agency generate qualified appointments
-        through outbound sales and prospecting.
+        Help a growing marketing agency generate qualified
+        appointments through outbound sales and prospecting.
       </p>
 
       <h3>What You'll Do</h3>
 
       <p>
-        Contact prospects, start conversations, qualify leads and book
-        qualified appointments for the sales team.
+        Contact prospects, start conversations, qualify leads
+        and book qualified appointments for the sales team.
       </p>
 
       <h3>Requirements</h3>
 
       <p>
-        Strong communication, consistency, willingness to learn and a
-        professional attitude.
+        Strong communication, consistency, willingness to learn
+        and a professional attitude.
       </p>
 
       <h3>Compensation</h3>
@@ -396,79 +462,90 @@ footer {
       </a>
 
     </div>
-
   </div>
-
 </section>
 
+<section class="section detail" id="closer-details">
 
-section class="section" id="closer-details">
+  <div class="detail-header">
 
-  <h2 class="section-title">High-Ticket Closer</h2>
+    <span class="tag">CLOSER</span>
 
-  <div class="cards">
+    <h2>High-Ticket Closer</h2>
 
-    <div class="card">
-      <h3>Role</h3>
-      <p>High-Ticket Closer</p>
+    <p class="detail-subtitle">
+      Coaching Business · Remote
+    </p>
+
+    <div class="info-grid">
+
+      <div class="card">
+        <h3>Role</h3>
+        <p>High-Ticket Closer</p>
+      </div>
+
+      <div class="card">
+        <h3>Industry</h3>
+        <p>Coaching</p>
+      </div>
+
+      <div class="card">
+        <h3>OTE</h3>
+        <p>£3k–£5k+</p>
+      </div>
+
     </div>
 
-    <div class="card">
-      <h3>Industry</h3>
-      <p>Coaching</p>
-    </div>
+    <div class="card detail-content">
 
-    <div class="card">
-      <h3>OTE</h3>
-      <p>£3k–£5k+</p>
-    </div>
+      <h3>About the Opportunity</h3>
 
+      <p>
+        Speak with qualified prospects and help them choose
+        the right coaching programme based on their goals.
+      </p>
+
+      <h3>What You'll Do</h3>
+
+      <p>
+        Conduct sales calls, understand prospect needs,
+        handle objections and close qualified opportunities.
+      </p>
+
+      <h3>Requirements</h3>
+
+      <p>
+        Strong communication, confidence, coachability and
+        willingness to improve your sales ability.
+      </p>
+
+      <h3>Compensation</h3>
+
+      <p>
+        Commission-based · Estimated OTE £3k–£5k+
+      </p>
+
+      <a class="button primary" href="#">
+        Apply Now
+      </a>
+
+    </div>
   </div>
-
-  <div class="card" style="max-width:900px;margin:30px auto;">
-    <h3>Opportunity Overview</h3>
-
-    <p>
-      Speak with qualified prospects and help them choose the right
-      coaching programme based on their goals and needs.
-    </p>
-
-    <h3>Responsibilities</h3>
-
-    <p>
-      Conduct sales calls, understand prospect needs, handle objections
-      and close qualified opportunities.
-    </p>
-
-    <h3>Requirements</h3>
-
-    <p>
-      Strong communication, confidence, coachability and a willingness
-      to improve your sales ability.
-    </p>
-
-    <a class="button primary" href="#">
-      Apply Now
-    </a>
-  </div>
-
 </section>
 
-<section class="section" id="dm-details">
+<section class="section detail" id="dm-details">
 
-  <div style="max-width:1000px;margin:auto;">
+  <div class="detail-header">
 
     <span class="tag">DM SETTER</span>
 
-    <h2 style="font-size:42px;margin:15px 0 10px;">
-      DM Sales Setter
-    </h2>
+    <h2>DM Sales Setter</h2>
 
-    <p style="color:#9CA3AF;font-size:18px;">
+    <p class="detail-subtitle">
       E-commerce Brand · Remote
     </p>
 
-    <div class="cards" style="margin-top:35px;">
+    <div class="info-grid">
 
       <div class="card">
         <h3>Role</h3>
@@ -487,27 +564,27 @@ section class="section" id="closer-details">
 
     </div>
 
-    <div class="card" style="margin-top:30px;">
+    <div class="card detail-content">
 
       <h3>About the Opportunity</h3>
 
       <p>
-        Start conversations with potential customers through social media
-        and help generate qualified sales opportunities.
+        Start conversations with potential customers through
+        social media and help generate qualified sales opportunities.
       </p>
 
       <h3>What You'll Do</h3>
 
       <p>
-        Respond to leads, start conversations, qualify prospects and
-        pass interested customers to the sales team.
+        Respond to leads, start conversations, qualify prospects
+        and pass interested customers to the sales team.
       </p>
 
       <h3>Requirements</h3>
 
       <p>
-        Good written communication, consistency, attention to detail and
-        willingness to learn.
+        Good written communication, consistency, attention to
+        detail and willingness to learn.
       </p>
 
       <h3>Compensation</h3>
@@ -521,48 +598,48 @@ section class="section" id="closer-details">
       </a>
 
     </div>
-
   </div>
-
-</section>
-<section class="section" id="membership">
-
-  <h2 class="section-title">Built For Serious Sales Professionals</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>Save Time</h3>
-      <p>
-        Stop searching through countless communities and platforms for your next opportunity.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Find Better Opportunities</h3>
-      <p>
-        Browse opportunities organised by role, industry, compensation and location.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>One Marketplace</h3>
-      <p>
-        Keep your sales opportunities organised in one professional platform.
-      </p>
-    </div>
-
-  </div>
-
 </section>
 
-<section class="cta">
+<section class="section membership" id="membership">
 
-  <h2>Ready to find your next opportunity?</h2>
+  <h2 class="section-title">
+    Built for Serious Sales Professionals
+  </h2>
 
-  <p>
-    Explore the sales opportunities available through Closerly.
+  <p class="membership-text">
+    Get access to curated opportunities, useful resources
+    and a growing marketplace designed for sales professionals.
   </p>
+
+  <div class="benefits">
+
+    <div class="benefit">
+      <h3>Curated Opportunities</h3>
+      <p>
+        Discover sales opportunities in one place.
+      </p>
+    </div>
+
+    <div class="benefit">
+      <h3>Quality Focus</h3>
+      <p>
+        Find opportunities designed for serious sales professionals.
+      </p>
+    </div>
+
+    <div class="benefit">
+      <h3>Built to Grow</h3>
+      <p>
+        Access resources and opportunities as Closerly grows.
+      </p>
+    </div>
+
+  </div>
+
+  <h2 style="margin-top:60px;">
+    Ready to Find Your Next Opportunity?
+  </h2>
 
   <a class="button primary" href="#opportunities">
     Explore Opportunities
@@ -573,28 +650,30 @@ section class="section" id="closer-details">
 <footer>
   © 2026 Closerly. All rights reserved.
 </footer>
+
 <script>
+
 function filterOpportunities() {
 
-  const search = document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase();
+  const search =
+    document.getElementById("searchInput")
+      .value
+      .toLowerCase();
 
-  const role = document
-    .getElementById("roleFilter")
-    .value
-    .toLowerCase();
+  const role =
+    document.getElementById("roleFilter")
+      .value
+      .toLowerCase();
 
-  const industry = document
-    .getElementById("industryFilter")
-    .value
-    .toLowerCase();
+  const industry =
+    document.getElementById("industryFilter")
+      .value
+      .toLowerCase();
 
-  const ote = document
-    .getElementById("oteFilter")
-    .value
-    .toLowerCase();
+  const ote =
+    document.getElementById("oteFilter")
+      .value
+      .toLowerCase();
 
   const opportunities =
     document.querySelectorAll(".opportunity");
@@ -608,13 +687,16 @@ function filterOpportunities() {
       text.includes(search);
 
     const matchesRole =
-      !role || text.includes(role);
+      !role ||
+      opportunity.dataset.role === role;
 
     const matchesIndustry =
-      !industry || text.includes(industry);
+      !industry ||
+      opportunity.dataset.industry === industry;
 
     const matchesOte =
-      !ote || text.includes(ote);
+      !ote ||
+      opportunity.dataset.ote === ote;
 
     if (
       matchesSearch &&
@@ -628,7 +710,10 @@ function filterOpportunities() {
     }
 
   });
+
 }
+
 </script>
+
 </body>
 </html>
