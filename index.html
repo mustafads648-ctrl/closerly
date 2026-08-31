@@ -6,263 +6,165 @@
 <title>Closerly — Sales Opportunities</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#08090d;color:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+
+nav{
+position:sticky;top:0;z-index:1000;
+background:rgba(8,9,13,.97);
+border-bottom:1px solid #20232c;
+padding:18px 6%;display:flex;justify-content:space-between;align-items:center
+}
+.logo{font-size:24px;font-weight:800}
+.nav-links{display:flex;gap:22px;color:#b8bdc9;align-items:center}
+.nav-links a:hover{color:#fff}
+
+.hero{
+text-align:center;padding:110px 20px 90px;
+background:radial-gradient(circle at top,#171b27 0%,#08090d 55%)
+}
+.hero h1{font-size:clamp(45px,8vw,80px);margin-bottom:20px}
+.hero p{color:#a8adba;font-size:20px;max-width:650px;margin:auto}
+
+.button{
+display:inline-block;padding:13px 22px;border-radius:9px;
+margin-top:20px;font-weight:700;cursor:pointer;border:0
+}
+.primary{background:#fff;color:#08090d}
+.secondary{border:1px solid #353a47;background:#11131a;color:#fff}
+.danger{background:#3a1515;color:#fff}
+.button:hover{transform:translateY(-2px)}
+
+.section{padding:80px 6%}
+.section-title{text-align:center;font-size:38px;margin-bottom:45px}
+
+.search-area{max-width:1100px;margin:0 auto 40px}
+.search-area input,.search-area select,
+.form input,.form select,.form textarea{
+width:100%;padding:14px;border-radius:9px;
+border:1px solid #30343f;background:#11131a;color:#fff
+}
+.form textarea{min-height:130px;resize:vertical}
+
+.filters{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:12px;margin-top:12px
 }
 
-html {
-  scroll-behavior: smooth;
+.cards{
+max-width:1100px;margin:auto;
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #08090d;
-  color: #ffffff;
-  line-height: 1.6;
+.card,.opportunity,.admin-card,.training-card{
+background:#11131a;border:1px solid #242832;
+border-radius:14px;padding:25px
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.opportunity h3{font-size:22px;margin:12px 0}
+.opportunity p,.card p,.training-card p{color:#a8adba;margin:8px 0}
+
+.tag{
+display:inline-block;font-size:12px;font-weight:800;
+letter-spacing:1px;padding:6px 10px;border-radius:20px;
+background:#202531
 }
 
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(8, 9, 13, 0.95);
-  border-bottom: 1px solid #20232c;
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.detail{display:none}
+.detail:target{display:block}
+.detail-header{max-width:1000px;margin:auto}
+.detail-header h2{font-size:clamp(36px,6vw,55px);margin:15px 0 8px}
+.detail-subtitle{color:#a8adba;font-size:18px}
+
+.info-grid{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:15px;margin:35px 0
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: 800;
+.membership{background:#0d0f15;text-align:center}
+.membership-text{max-width:650px;margin:auto;color:#a8adba}
+
+.benefits{
+max-width:1000px;margin:40px auto;
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px
 }
 
-.nav-links {
-  display: flex;
-  gap: 25px;
-  color: #b8bdc9;
+.benefit{
+background:#11131a;border:1px solid #242832;
+padding:25px;border-radius:14px
 }
 
-.nav-links a:hover {
-  color: #ffffff;
+.training{
+background:#08090d
 }
 
-.hero {
-  text-align: center;
-  padding: 110px 20px 90px;
-  background: radial-gradient(circle at top, #171b27 0%, #08090d 55%);
+.training-grid{
+max-width:1100px;margin:auto;
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px
 }
 
-.hero h1 {
-  font-size: clamp(45px, 8vw, 80px);
-  margin-bottom: 20px;
+.training-card h3{margin-bottom:10px}
+
+.admin{
+display:none;
+background:#0d0f15;
+border-top:1px solid #292d38
 }
 
-.hero p {
-  color: #a8adba;
-  font-size: 20px;
-  max-width: 650px;
-  margin: auto;
+.admin.active{display:block}
+
+.admin-header{
+max-width:1100px;margin:auto;
+display:flex;justify-content:space-between;
+align-items:center;margin-bottom:30px
 }
 
-.button {
-  display: inline-block;
-  padding: 13px 22px;
-  border-radius: 9px;
-  margin-top: 25px;
-  font-weight: 700;
-  transition: 0.2s;
+.admin-grid{
+max-width:1100px;margin:auto;
+display:grid;grid-template-columns:1fr 1fr;gap:25px
 }
 
-.button:hover {
-  transform: translateY(-2px);
+.form{
+display:flex;flex-direction:column;gap:12px
 }
 
-.primary {
-  background: #ffffff;
-  color: #08090d;
+.form label{
+font-size:13px;color:#a8adba
 }
 
-.secondary {
-  border: 1px solid #353a47;
-  background: #11131a;
-  color: #ffffff;
+.admin-list{
+display:flex;flex-direction:column;gap:12px
 }
 
-.section {
-  padding: 90px 6%;
+.admin-item{
+background:#11131a;border:1px solid #242832;
+border-radius:10px;padding:18px
 }
 
-.section-title {
-  text-align: center;
-  font-size: 38px;
-  margin-bottom: 50px;
+.admin-item-actions{
+display:flex;gap:8px;flex-wrap:wrap
 }
 
-.search-area {
-  max-width: 1100px;
-  margin: 0 auto 45px;
+.notice{
+max-width:1100px;margin:0 auto 25px;
+padding:14px;border-radius:9px;
+background:#151923;color:#b8bdc9;
+display:none
 }
 
-.search-area input,
-.search-area select {
-  width: 100%;
-  padding: 15px;
-  border-radius: 9px;
-  border: 1px solid #30343f;
-  background: #11131a;
-  color: white;
-  font-size: 15px;
+footer{
+text-align:center;padding:35px;
+color:#777d8b;border-top:1px solid #20232c
 }
 
-.filters {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.cards {
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.card,
-.opportunity {
-  background: #11131a;
-  border: 1px solid #242832;
-  border-radius: 14px;
-  padding: 25px;
-}
-
-.opportunity h3 {
-  font-size: 22px;
-  margin: 12px 0;
-}
-
-.opportunity p,
-.card p {
-  color: #a8adba;
-  margin: 8px 0;
-}
-
-.tag {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  padding: 6px 10px;
-  border-radius: 20px;
-  background: #202531;
-  color: #ffffff;
-}
-
-.detail {
-  display: none;
-}
-
-.detail:target {
-  display: block;
-}
-
-.detail-header {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.detail-header h2 {
-  font-size: clamp(36px, 6vw, 55px);
-  margin: 15px 0 8px;
-}
-
-.detail-subtitle {
-  color: #a8adba;
-  font-size: 18px;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin: 35px 0;
-}
-
-.detail-content {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.detail-content h3 {
-  margin-top: 25px;
-  margin-bottom: 8px;
-}
-
-.detail-content p {
-  color: #a8adba;
-}
-
-.membership {
-  background: #0d0f15;
-  text-align: center;
-}
-
-.membership-text {
-  max-width: 650px;
-  margin: auto;
-  color: #a8adba;
-}
-
-.benefits {
-  max-width: 1000px;
-  margin: 40px auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.benefit {
-  background: #11131a;
-  border: 1px solid #242832;
-  padding: 25px;
-  border-radius: 14px;
-}
-
-footer {
-  text-align: center;
-  padding: 35px;
-  color: #777d8b;
-  border-top: 1px solid #20232c;
-}
-
-@media (max-width: 800px) {
-  .cards,
-  .benefits,
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .filters {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .section {
-    padding: 70px 5%;
-  }
+@media(max-width:800px){
+.cards,.benefits,.training-grid,.info-grid,.admin-grid{grid-template-columns:1fr}
+.filters{grid-template-columns:1fr}
+.nav-links{display:none}
+.section{padding:65px 5%}
 }
 </style>
 </head>
@@ -270,463 +172,1103 @@ footer {
 <body>
 
 <nav>
-  <div class="logo">Closerly</div>
+<div class="logo">Closerly</div>
 
-  <div class="nav-links">
-    <a href="#opportunities">Opportunities</a>
-    <a href="#membership">Membership</a>
-  </div>
+<div class="nav-links">
+<a href="#opportunities">Opportunities</a>
+<a href="#training">Training</a>
+<a href="#membership">Membership</a>
+<a href="#admin">Admin</a>
+</div>
 </nav>
+
 
 <section class="hero">
 
-  <h1>Find Your Next Opportunity.</h1>
+<h1>Find Your Next Opportunity.</h1>
 
-  <p>
-    Discover curated sales opportunities built for ambitious
-    setters and closers.
-  </p>
+<p>
+Discover curated sales opportunities and training built
+for ambitious setters, closers and sales professionals.
+</p>
 
-  <a class="button primary" href="#opportunities">
-    Explore Opportunities
-  </a>
+<a class="button primary" href="#opportunities">
+Explore Opportunities
+</a>
 
-  <a class="button secondary" href="#membership">
-    Become a Member
-  </a>
+<a class="button secondary" href="#membership">
+Become a Member
+</a>
 
 </section>
+
 
 <section class="section" id="opportunities">
 
-  <h2 class="section-title">
-    Explore Opportunities
-  </h2>
+<h2 class="section-title">Explore Opportunities</h2>
 
-  <div class="search-area">
+<div class="search-area">
 
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Search opportunities..."
-      oninput="filterOpportunities()"
-    >
+<input
+id="searchInput"
+type="text"
+placeholder="Search opportunities..."
+>
 
-    <div class="filters">
+<div class="filters">
 
-      <select id="roleFilter" onchange="filterOpportunities()">
-        <option value="">All Roles</option>
-        <option value="setter">Setter</option>
-        <option value="closer">Closer</option>
-        <option value="dm setter">DM Setter</option>
-      </select>
+<select id="roleFilter">
+<option value="">All Roles</option>
+<option value="setter">Setter</option>
+<option value="closer">Closer</option>
+<option value="dm setter">DM Setter</option>
+</select>
 
-      <select id="industryFilter" onchange="filterOpportunities()">
-        <option value="">All Industries</option>
-        <option value="marketing">Marketing</option>
-        <option value="coaching">Coaching</option>
-        <option value="e-commerce">E-commerce</option>
-      </select>
+<select id="industryFilter">
+<option value="">All Industries</option>
+<option value="marketing">Marketing</option>
+<option value="coaching">Coaching</option>
+<option value="e-commerce">E-commerce</option>
+<option value="home services">Home Services</option>
+</select>
 
-      <select id="oteFilter" onchange="filterOpportunities()">
-        <option value="">All OTE</option>
-        <option value="1k-3k">£1k–£3k</option>
-        <option value="3k-5k">£3k–£5k</option>
-        <option value="5k+">£5k+</option>
-      </select>
+<select id="oteFilter">
+<option value="">All OTE</option>
+<option value="1k">£1k–£3k</option>
+<option value="3k">£3k–£5k</option>
+<option value="5k">£5k+</option>
+</select>
 
-    </div>
-  </div>
+</div>
+</div>
 
-  <div class="cards" id="opportunityList">
+<div id="siteStatus" class="notice"></div>
 
-    <div class="opportunity"
-         data-role="setter"
-         data-industry="marketing"
-         data-ote="1k-3k">
+<div class="cards" id="opportunityList"></div>
 
-      <span class="tag">SETTER</span>
-
-      <h3>High-Ticket Sales Setter</h3>
-
-      <p>Marketing Agency · Remote</p>
-      <p>OTE: £1k–£3k+</p>
-
-      <a class="button secondary" href="#setter-details">
-        View Opportunity
-      </a>
-
-    </div>
-
-    <div class="opportunity"
-         data-role="closer"
-         data-industry="coaching"
-         data-ote="3k-5k">
-
-      <span class="tag">CLOSER</span>
-
-      <h3>High-Ticket Closer</h3>
-
-      <p>Coaching Business · Remote</p>
-      <p>OTE: £3k–£5k+</p>
-
-      <a class="button secondary" href="#closer-details">
-        View Opportunity
-      </a>
-
-    </div>
-
-    <div class="opportunity"
-         data-role="dm setter"
-         data-industry="e-commerce"
-         data-ote="1k-3k">
-
-      <span class="tag">DM SETTER</span>
-
-      <h3>DM Sales Setter</h3>
-
-      <p>E-commerce Brand · Remote</p>
-      <p>OTE: £1k–£3k+</p>
-
-      <a class="button secondary" href="#dm-details">
-        View Opportunity
-      </a>
-
-    </div>
-
-  </div>
 </section>
 
-<section class="section detail" id="setter-details">
 
-  <div class="detail-header">
+<section class="section training" id="training">
 
-    <span class="tag">SETTER</span>
+<h2 class="section-title">Sales Training</h2>
 
-    <h2>High-Ticket Sales Setter</h2>
+<div class="training-grid">
 
-    <p class="detail-subtitle">
-      Marketing Agency · Remote
-    </p>
+<div class="training-card">
+<h3>Setter Fundamentals</h3>
+<p>
+Learn prospecting, opening conversations,
+qualification and appointment setting.
+</p>
+</div>
 
-    <div class="info-grid">
+<div class="training-card">
+<h3>DM Setting</h3>
+<p>
+Learn how to start conversations, qualify prospects
+and move interested leads toward a sales call.
+</p>
+</div>
 
-      <div class="card">
-        <h3>Role</h3>
-        <p>Appointment Setter</p>
-      </div>
+<div class="training-card">
+<h3>Closing Fundamentals</h3>
+<p>
+Learn discovery, objection handling, presenting
+value and closing qualified prospects.
+</p>
+</div>
 
-      <div class="card">
-        <h3>Industry</h3>
-        <p>Marketing</p>
-      </div>
+<div class="training-card">
+<h3>Lead Qualification</h3>
+<p>
+Understand how to identify serious prospects
+and avoid wasting time on poor-fit leads.
+</p>
+</div>
 
-      <div class="card">
-        <h3>OTE</h3>
-        <p>£1k–£3k+</p>
-      </div>
+<div class="training-card">
+<h3>Objection Handling</h3>
+<p>
+Build confidence handling common sales objections
+without becoming pushy.
+</p>
+</div>
 
-    </div>
+<div class="training-card">
+<h3>Sales Mindset</h3>
+<p>
+Develop consistency, discipline and professional
+communication for a sales career.
+</p>
+</div>
 
-    <div class="card detail-content">
+</div>
 
-      <h3>About the Opportunity</h3>
-
-      <p>
-        Help a growing marketing agency generate qualified
-        appointments through outbound sales and prospecting.
-      </p>
-
-      <h3>What You'll Do</h3>
-
-      <p>
-        Contact prospects, start conversations, qualify leads
-        and book qualified appointments for the sales team.
-      </p>
-
-      <h3>Requirements</h3>
-
-      <p>
-        Strong communication, consistency, willingness to learn
-        and a professional attitude.
-      </p>
-
-      <h3>Compensation</h3>
-
-      <p>
-        Commission-based · Estimated OTE £1k–£3k+
-      </p>
-
-      <a class="button primary" href="#">
-        Apply Now
-      </a>
-
-    </div>
-  </div>
 </section>
 
-<section class="section detail" id="closer-details">
-
-  <div class="detail-header">
-
-    <span class="tag">CLOSER</span>
-
-    <h2>High-Ticket Closer</h2>
-
-    <p class="detail-subtitle">
-      Coaching Business · Remote
-    </p>
-
-    <div class="info-grid">
-
-      <div class="card">
-        <h3>Role</h3>
-        <p>High-Ticket Closer</p>
-      </div>
-
-      <div class="card">
-        <h3>Industry</h3>
-        <p>Coaching</p>
-      </div>
-
-      <div class="card">
-        <h3>OTE</h3>
-        <p>£3k–£5k+</p>
-      </div>
-
-    </div>
-
-    <div class="card detail-content">
-
-      <h3>About the Opportunity</h3>
-
-      <p>
-        Speak with qualified prospects and help them choose
-        the right coaching programme based on their goals.
-      </p>
-
-      <h3>What You'll Do</h3>
-
-      <p>
-        Conduct sales calls, understand prospect needs,
-        handle objections and close qualified opportunities.
-      </p>
-
-      <h3>Requirements</h3>
-
-      <p>
-        Strong communication, confidence, coachability and
-        willingness to improve your sales ability.
-      </p>
-
-      <h3>Compensation</h3>
-
-      <p>
-        Commission-based · Estimated OTE £3k–£5k+
-      </p>
-
-      <a class="button primary" href="#">
-        Apply Now
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<section class="section detail" id="dm-details">
-
-  <div class="detail-header">
-
-    <span class="tag">DM SETTER</span>
-
-    <h2>DM Sales Setter</h2>
-
-    <p class="detail-subtitle">
-      E-commerce Brand · Remote
-    </p>
-
-    <div class="info-grid">
-
-      <div class="card">
-        <h3>Role</h3>
-        <p>DM Setter</p>
-      </div>
-
-      <div class="card">
-        <h3>Industry</h3>
-        <p>E-commerce</p>
-      </div>
-
-      <div class="card">
-        <h3>OTE</h3>
-        <p>£1k–£3k+</p>
-      </div>
-
-    </div>
-
-    <div class="card detail-content">
-
-      <h3>About the Opportunity</h3>
-
-      <p>
-        Start conversations with potential customers through
-        social media and help generate qualified sales opportunities.
-      </p>
-
-      <h3>What You'll Do</h3>
-
-      <p>
-        Respond to leads, start conversations, qualify prospects
-        and pass interested customers to the sales team.
-      </p>
-
-      <h3>Requirements</h3>
-
-      <p>
-        Good written communication, consistency, attention to
-        detail and willingness to learn.
-      </p>
-
-      <h3>Compensation</h3>
-
-      <p>
-        Commission-based · Estimated OTE £1k–£3k+
-      </p>
-
-      <a class="button primary" href="#">
-        Apply Now
-      </a>
-
-    </div>
-  </div>
-</section>
 
 <section class="section membership" id="membership">
 
-  <h2 class="section-title">
-    Built for Serious Sales Professionals
-  </h2>
+<h2 class="section-title">
+Built for Serious Sales Professionals
+</h2>
 
-  <p class="membership-text">
-    Get access to curated opportunities, useful resources
-    and a growing marketplace designed for sales professionals.
-  </p>
+<p class="membership-text">
+Get access to curated opportunities, useful training
+and a growing marketplace designed for sales professionals.
+</p>
 
-  <div class="benefits">
+<div class="benefits">
 
-    <div class="benefit">
-      <h3>Curated Opportunities</h3>
-      <p>
-        Discover sales opportunities in one place.
-      </p>
-    </div>
+<div class="benefit">
+<h3>Curated Opportunities</h3>
+<p>Discover sales opportunities in one place.</p>
+</div>
 
-    <div class="benefit">
-      <h3>Quality Focus</h3>
-      <p>
-        Find opportunities designed for serious sales professionals.
-      </p>
-    </div>
+<div class="benefit">
+<h3>Sales Training</h3>
+<p>Build practical skills for setting and closing.</p>
+</div>
 
-    <div class="benefit">
-      <h3>Built to Grow</h3>
-      <p>
-        Access resources and opportunities as Closerly grows.
-      </p>
-    </div>
+<div class="benefit">
+<h3>Built to Grow</h3>
+<p>Access new opportunities and resources as Closerly grows.</p>
+</div>
 
-  </div>
+</div>
 
-  <h2 style="margin-top:60px;">
-    Ready to Find Your Next Opportunity?
-  </h2>
+<h2 style="margin-top:60px;">
+Ready to Find Your Next Opportunity?
+</h2>
 
-  <a class="button primary" href="#opportunities">
-    Explore Opportunities
-  </a>
+<a class="button primary" href="#opportunities">
+Explore Opportunities
+</a>
 
 </section>
 
+
+<section class="section admin" id="admin">
+
+<div class="admin-header">
+
+<div>
+<h2>Closerly Admin</h2>
+<p style="color:#a8adba">
+Manage your opportunities.
+</p>
+</div>
+
+<button
+class="button secondary"
+id="adminLogout"
+style="margin-top:0"
+>
+Log Out
+</button>
+
+</div>
+
+
+<div id="adminNotice" class="notice"></div>
+
+
+<div class="admin-grid">
+
+<div class="admin-card">
+
+<h2 style="margin-bottom:20px">
+Add Opportunity
+</h2>
+
+<form class="form" id="opportunityForm">
+
+<label>Title</label>
+<input id="adminTitle" required>
+
+<label>Company</label>
+<input id="adminCompany" required>
+
+<label>Role</label>
+<select id="adminRole" required>
+<option value="Setter">Setter</option>
+<option value="Closer">Closer</option>
+<option value="DM Setter">DM Setter</option>
+</select>
+
+<label>Industry</label>
+<input id="adminIndustry" required>
+
+<label>OTE</label>
+<input id="adminOte" placeholder="£2k–£5k+" required>
+
+<label>Location</label>
+<input id="adminLocation" value="Remote">
+
+<label>Description</label>
+<textarea id="adminDescription" required></textarea>
+
+<label>Application Link</label>
+<input
+id="adminApplication"
+type="url"
+placeholder="https://..."
+required
+>
+
+<button
+class="button primary"
+type="submit"
+>
+Publish Opportunity
+</button>
+
+</form>
+
+</div>
+
+
+<div class="admin-card">
+
+<h2 style="margin-bottom:20px">
+Current Opportunities
+</h2>
+
+<div
+id="adminOpportunityList"
+class="admin-list"
+>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
 <footer>
-  © 2026 Closerly. All rights reserved.
+© 2026 Closerly. All rights reserved.
 </footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-const SUPABASE_URL = "https://mykfvwtjstfchamdnhab.supabase.co";
+const SUPABASE_URL =
+"https://mykfvwtjstfchamdnhab.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_IptXzKpO_9QSuC3NQczm2A_wkhK9IYw";
+const SUPABASE_KEY =
+"sb_publishable_IptXzKpO_9QSuC3NQczm2A_wkhK9IYw";
 
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
-async function checkSupabaseConnection() {
 
-  const { data, error } = await supabaseClient
-    .from("opportunities")
-    .select("id")
-    .limit(1);
+let opportunities = [];
 
-  if (error) {
-    console.error("Supabase connection error:", error);
-    return;
-  }
 
-  console.log("Closerly connected to Supabase successfully.");
+/* HELPERS */
+
+function clean(value){
+return String(value ?? "");
+}
+
+
+function escapeHTML(value){
+
+return clean(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
-checkSupabaseConnection();
 
-</script>
-<script>
-async function loadOpportunities() {
-  const { data, error } = await supabaseClient
-    .from("opportunities")
-    .select("*")
-    .order("created_at", { ascending: false });
+function showStatus(message){
 
-  if (error) {
-    console.error("Could not load opportunities:", error);
-    return;
-  }
+const box =
+document.getElementById("siteStatus");
 
-  const list = document.getElementById("opportunityList");
+box.textContent = message;
+box.style.display = "block";
 
-  if (!list) return;
-
-  list.innerHTML = "";
-
-  data.forEach(function(opportunity) {
-
-    const card = document.createElement("div");
-
-    card.className = "opportunity";
-
-    card.innerHTML = `
-      <span class="tag">${opportunity.role || "SALES"}</span>
-
-      <h3>${opportunity.title || "Untitled Opportunity"}</h3>
-
-      <p>${opportunity.company || "Company"} · ${opportunity.location || "Remote"}</p>
-
-      <p>OTE: ${opportunity.ote || "Not specified"}</p>
-
-      <a class="button secondary"
-         href="#opportunity-${opportunity.id}">
-        View Opportunity
-      </a>
-    `;
-
-    list.appendChild(card);
-  });
 }
+
+
+function showAdminMessage(message){
+
+const box =
+document.getElementById("adminNotice");
+
+box.textContent = message;
+box.style.display = "block";
+
+}
+
+
+/* LOAD */
+
+async function loadOpportunities(){
+
+const result =
+await supabaseClient
+.from("opportunities")
+.select("*")
+.order("created_at",{ascending:false});
+
+
+if(result.error){
+
+console.error(result.error);
+
+showStatus(
+"Could not load opportunities. Check your Supabase table permissions."
+);
+
+return;
+}
+
+
+opportunities =
+result.data || [];
+
+displayOpportunities(
+opportunities
+);
+
+renderAdminList();
+
+}
+
+
+function displayOpportunities(list){
+
+const container =
+document.getElementById(
+"opportunityList"
+);
+
+container.innerHTML = "";
+
+
+if(!list.length){
+
+container.innerHTML =
+`
+<div class="card" style="grid-column:1/-1;text-align:center">
+<h3>No opportunities found</h3>
+<p>Check back soon for new opportunities.</p>
+</div>
+`;
+
+return;
+
+}
+
+
+list.forEach(function(opportunity){
+
+const card =
+document.createElement("div");
+
+card.className =
+"opportunity";
+
+
+card.innerHTML = `
+
+<span class="tag">
+${escapeHTML(
+opportunity.role || "SALES"
+)}
+</span>
+
+<h3>
+${escapeHTML(
+opportunity.title ||
+"Untitled Opportunity"
+)}
+</h3>
+
+<p>
+${escapeHTML(
+opportunity.company ||
+"Company"
+)}
+·
+${escapeHTML(
+opportunity.location ||
+"Remote"
+)}
+</p>
+
+<p>
+OTE:
+${escapeHTML(
+opportunity.ote ||
+"Not specified"
+)}
+</p>
+
+<a
+class="button secondary"
+href="#opportunity-${opportunity.id}"
+>
+View Opportunity
+</a>
+
+`;
+
+
+container.appendChild(card);
+
+createDetail(
+opportunity
+);
+
+});
+
+}
+
+
+function createDetail(opportunity){
+
+const id =
+"opportunity-" +
+opportunity.id;
+
+
+const existing =
+document.getElementById(id);
+
+if(existing)
+existing.remove();
+
+
+const section =
+document.createElement("section");
+
+section.className =
+"section detail";
+
+section.id = id;
+
+
+section.innerHTML = `
+
+<div class="detail-header">
+
+<span class="tag">
+${escapeHTML(
+opportunity.role || "SALES"
+)}
+</span>
+
+<h2>
+${escapeHTML(
+opportunity.title ||
+"Untitled Opportunity"
+)}
+</h2>
+
+<p class="detail-subtitle">
+${escapeHTML(
+opportunity.company ||
+"Company"
+)}
+·
+${escapeHTML(
+opportunity.location ||
+"Remote"
+)}
+</p>
+
+<div class="info-grid">
+
+<div class="card">
+<h3>Role</h3>
+<p>
+${escapeHTML(
+opportunity.role ||
+"Not specified"
+)}
+</p>
+</div>
+
+<div class="card">
+<h3>Industry</h3>
+<p>
+${escapeHTML(
+opportunity.industry ||
+"Not specified"
+)}
+</p>
+</div>
+
+<div class="card">
+<h3>OTE</h3>
+<p>
+${escapeHTML(
+opportunity.ote ||
+"Not specified"
+)}
+</p>
+</div>
+
+</div>
+
+<div class="card detail-content">
+
+<h3>About the Opportunity</h3>
+
+<p>
+${escapeHTML(
+opportunity.description ||
+"No description provided."
+)}
+</p>
+
+<a
+class="button primary"
+href="${
+opportunity.application_link || "#"
+}"
+target="_blank"
+rel="noopener noreferrer"
+>
+Apply Now
+</a>
+
+</div>
+
+</div>
+`;
+
+
+document
+.getElementById("opportunities")
+.after(section);
+
+}
+
+
+/* FILTERS */
+
+function filterOpportunities(){
+
+const search =
+document.getElementById(
+"searchInput"
+).value.toLowerCase();
+
+
+const role =
+document.getElementById(
+"roleFilter"
+).value.toLowerCase();
+
+
+const industry =
+document.getElementById(
+"industryFilter"
+).value.toLowerCase();
+
+
+const ote =
+document.getElementById(
+"oteFilter"
+).value.toLowerCase();
+
+
+const filtered =
+opportunities.filter(
+function(opportunity){
+
+const text = `
+${opportunity.title || ""}
+${opportunity.company || ""}
+${opportunity.role || ""}
+${opportunity.industry || ""}
+${opportunity.ote || ""}
+${opportunity.location || ""}
+`.toLowerCase();
+
+
+return (
+
+(!search || text.includes(search)) &&
+
+(!role ||
+(opportunity.role || "")
+.toLowerCase()
+.includes(role)) &&
+
+(!industry ||
+(opportunity.industry || "")
+.toLowerCase()
+.includes(industry)) &&
+
+(!ote ||
+(opportunity.ote || "")
+.toLowerCase()
+.includes(ote))
+
+);
+
+});
+
+
+displayOpportunities(
+filtered
+);
+
+}
+
+
+/* ADMIN */
+
+async function checkAdmin(){
+
+const {
+data:{
+session
+}
+} =
+await supabaseClient
+.auth
+.getSession();
+
+
+if(!session){
+
+return false;
+
+}
+
+
+const {
+data:profile,
+error
+} =
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",session.user.id)
+.single();
+
+
+if(error){
+
+console.error(error);
+
+return false;
+
+}
+
+
+/*
+Your profiles table needs an admin
+field such as:
+
+role = admin
+
+*/
+
+if(profile.role !== "admin"){
+
+return false;
+
+}
+
+
+document
+.getElementById("admin")
+.classList
+.add("active");
+
+return true;
+
+}
+
+
+/* LOGIN THROUGH ADMIN AREA */
+
+async function handleAdmin(){
+
+const existing =
+await checkAdmin();
+
+
+if(existing){
+
+document
+.getElementById("admin")
+.scrollIntoView();
+
+return;
+
+}
+
+
+const email =
+prompt(
+"Enter your admin email:"
+);
+
+if(!email)
+return;
+
+
+const password =
+prompt(
+"Enter your password:"
+);
+
+if(!password)
+return;
+
+
+const result =
+await supabaseClient
+.auth
+.signInWithPassword({
+email:email,
+password:password
+});
+
+
+if(result.error){
+
+alert(
+"Login failed: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+const allowed =
+await checkAdmin();
+
+
+if(!allowed){
+
+await supabaseClient
+.auth
+.signOut();
+
+alert(
+"Your account does not have admin access."
+);
+
+return;
+
+}
+
+
+document
+.getElementById("admin")
+.scrollIntoView();
+
+}
+
+
+async function logout(){
+
+await supabaseClient
+.auth
+.signOut();
+
+document
+.getElementById("admin")
+.classList
+.remove("active");
+
+alert(
+"You have been logged out."
+);
+
+}
+
+
+/* ADD OPPORTUNITY */
+
+document
+.getElementById("opportunityForm")
+.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+
+const sessionResult =
+await supabaseClient
+.auth
+.getSession();
+
+
+if(
+!sessionResult.data.session
+){
+
+alert(
+"Please log in as admin first."
+);
+
+return;
+
+}
+
+
+const opportunity = {
+
+title:
+document.getElementById(
+"adminTitle"
+).value.trim(),
+
+company:
+document.getElementById(
+"adminCompany"
+).value.trim(),
+
+role:
+document.getElementById(
+"adminRole"
+).value,
+
+industry:
+document.getElementById(
+"adminIndustry"
+).value.trim(),
+
+ote:
+document.getElementById(
+"adminOte"
+).value.trim(),
+
+location:
+document.getElementById(
+"adminLocation"
+).value.trim(),
+
+description:
+document.getElementById(
+"adminDescription"
+).value.trim(),
+
+application_link:
+document.getElementById(
+"adminApplication"
+).value.trim()
+
+};
+
+
+const result =
+await supabaseClient
+.from("opportunities")
+.insert(opportunity);
+
+
+if(result.error){
+
+console.error(result.error);
+
+showAdminMessage(
+"Could not publish opportunity: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+showAdminMessage(
+"Opportunity published successfully."
+);
+
+
+document
+.getElementById(
+"opportunityForm"
+)
+.reset();
+
 
 loadOpportunities();
+
+});
+
+
+/* ADMIN LIST */
+
+function renderAdminList(){
+
+const list =
+document.getElementById(
+"adminOpportunityList"
+);
+
+list.innerHTML = "";
+
+
+opportunities.forEach(
+function(opportunity){
+
+const item =
+document.createElement("div");
+
+item.className =
+"admin-item";
+
+
+item.innerHTML = `
+
+<strong>
+${escapeHTML(
+opportunity.title
+)}
+</strong>
+
+<p>
+${escapeHTML(
+opportunity.company
+)}
+·
+${escapeHTML(
+opportunity.role
+)}
+</p>
+
+<div class="admin-item-actions">
+
+<button
+class="button danger"
+style="margin-top:10px"
+onclick="deleteOpportunity('${opportunity.id}')"
+>
+Delete
+</button>
+
+</div>
+
+`;
+
+
+list.appendChild(item);
+
+});
+
+}
+
+
+async function deleteOpportunity(id){
+
+if(
+!confirm(
+"Delete this opportunity?"
+)
+)
+return;
+
+
+const result =
+await supabaseClient
+.from("opportunities")
+.delete()
+.eq("id",id);
+
+
+if(result.error){
+
+alert(
+"Could not delete opportunity: " +
+result.error.message
+);
+
+return;
+
+}
+
+
+loadOpportunities();
+
+}
+
+
+/* EVENTS */
+
+document
+.getElementById("searchInput")
+.addEventListener(
+"input",
+filterOpportunities
+);
+
+document
+.getElementById("roleFilter")
+.addEventListener(
+"change",
+filterOpportunities
+);
+
+document
+.getElementById("industryFilter")
+.addEventListener(
+"change",
+filterOpportunities
+);
+
+document
+.getElementById("oteFilter")
+.addEventListener(
+"change",
+filterOpportunities
+);
+
+document
+.getElementById("adminLogout")
+.addEventListener(
+"click",
+logout
+);
+
+
+/* ADMIN NAV */
+
+document
+.querySelector(
+'a[href="#admin"]'
+)
+.addEventListener(
+"click",
+function(event){
+
+event.preventDefault();
+
+handleAdmin();
+
+});
+
+
+/* START */
+
+loadOpportunities();
+
 </script>
+
 </body>
 </html>
