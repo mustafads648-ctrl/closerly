@@ -651,67 +651,36 @@ footer {
   © 2026 Closerly. All rights reserved.
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
-function filterOpportunities() {
+const SUPABASE_URL = "https://mykfvwtjstfchamdnhab.supabase.co";
 
-  const search =
-    document.getElementById("searchInput")
-      .value
-      .toLowerCase();
+const SUPABASE_KEY = "sb_publishable_IptXzKpO_9QSuC3NQczm2A_wkhK9IYw";
 
-  const role =
-    document.getElementById("roleFilter")
-      .value
-      .toLowerCase();
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-  const industry =
-    document.getElementById("industryFilter")
-      .value
-      .toLowerCase();
+async function checkSupabaseConnection() {
 
-  const ote =
-    document.getElementById("oteFilter")
-      .value
-      .toLowerCase();
+  const { data, error } = await supabaseClient
+    .from("opportunities")
+    .select("id")
+    .limit(1);
 
-  const opportunities =
-    document.querySelectorAll(".opportunity");
+  if (error) {
+    console.error("Supabase connection error:", error);
+    return;
+  }
 
-  opportunities.forEach(function(opportunity) {
-
-    const text =
-      opportunity.textContent.toLowerCase();
-
-    const matchesSearch =
-      text.includes(search);
-
-    const matchesRole =
-      !role ||
-      opportunity.dataset.role === role;
-
-    const matchesIndustry =
-      !industry ||
-      opportunity.dataset.industry === industry;
-
-    const matchesOte =
-      !ote ||
-      opportunity.dataset.ote === ote;
-
-    if (
-      matchesSearch &&
-      matchesRole &&
-      matchesIndustry &&
-      matchesOte
-    ) {
-      opportunity.style.display = "block";
-    } else {
-      opportunity.style.display = "none";
-    }
-
-  });
+  console.log("Closerly connected to Supabase successfully.");
 
 }
+
+checkSupabaseConnection();
 
 </script>
 
